@@ -1,0 +1,8 @@
+- name: copy {{ component }} service
+  ansible.builtin.template: # To copy file from local to remote substitute variables
+    src: "{{ component }}.service.j2" # Template file should have .j2 extension (jinja2 template)
+    dest: "/etc/systemd/system/{{ component }}.service"
+
+- name: daemon-reload
+  ansible.builtin.systemd_service:
+    daemon_reload: yes

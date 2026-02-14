@@ -1,2 +1,12 @@
 ansible_user: ec2-user
 ansible_password: DevOps321
+
+MONGODB_HOST: mongodb-dev.dawsmani.site
+CATALOGUE_HOST: catalogue-dev.dawsmani.site
+REDIS_HOST: redis-dev.dawsmani.site
+USER_HOST: user-dev.dawsmani.site
+CART_HOST: cart-dev.dawsmani.site
+MYSQL_HOST: mysql-dev.dawsmani.site
+SHIPPING_HOST: shipping-dev.dawsmani.site
+RABBITMQ_HOST: rabbitmq-dev.dawsmani.site
+PAYMENT_HOST: payment-dev.dawsmani.site
