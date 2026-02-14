@@ -1,0 +1,5 @@
+- name: reoles demo
+  hosts: loal
+  connection: local
+  roles:
+  - demo # This will load the tasks folder from demo role and execute it if it is main.yaml
