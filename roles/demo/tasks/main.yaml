@@ -1,4 +1,3 @@
 - name: Hello World
   ansible.builtin.debug:
-    msg: "Hi I am from roles"
-    
+    msg: "Hi I am from roles directory and I am executing from main.yaml file"
