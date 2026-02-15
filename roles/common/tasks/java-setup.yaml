@@ -1,0 +1,17 @@
+- name: Install maven and mysql client
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+  - maven
+  - mysql
+
+- name: download mvn dependencies
+  ansible.builtin.command: mvn clean package
+  args:
+    chdir: /app  # 1st go this dir then run the command (mvn clean)
+
+- name: download dependencies
+  ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
+  args:
+    chdir: /app
