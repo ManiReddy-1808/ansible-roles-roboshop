@@ -120,7 +120,7 @@ Meaning:
 Deploy everything:
 
 ```bash
-ansible-playbook -e component=all roboshop.yaml
+ansible-playbook -e component=all create-ec2.yaml
 ```
 
 ---
@@ -130,14 +130,15 @@ ansible-playbook -e component=all roboshop.yaml
 Example: deploy only **mongodb service**
 
 ```bash
-ansible-playbook -e component=mongodb roboshop.yaml
+ansible-playbook -e component=mongodb create-ec2.yaml
 ```
 
 ```
-ansible-playbook -e component=mongodb create-ec2.yaml; ansible-playbook -e component=catalogue create-ec2.yaml; ansible-playbook -e component=redis create-ec2.yaml; ansible-playbook -e component=user create-ec2.yaml; 
+ansible-playbook -e component=mongodb create-ec2.yaml; ansible-playbook -e component=catalogue create-ec2.yaml
+ansible-playbook -e component=redis create-ec2.yaml; ansible-playbook -e component=user create-ec2.yaml; 
 ansible-playbook -e component=cart create-ec2.yaml; ansible-playbook -e component=mysql create-ec2.yaml;
 ansible-playbook -e component=shipping create-ec2.yaml; ansible-playbook -e component=rabbitmq create-ec2.yaml;
- ansible-playbook -e component=payment create-ec2.yaml;  ansible-playbook -e component=frontend create-ec2.yaml
+ansible-playbook -e component=payment create-ec2.yaml;  ansible-playbook -e component=frontend create-ec2.yaml
 ````
 
 ---
