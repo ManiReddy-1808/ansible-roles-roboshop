@@ -34,6 +34,7 @@ Instead of repeating tasks everywhere, common things are written once:
 * NodeJS setup
 * Java setup
 * Python setup
+* Systemd setup
 
 All microservices reuse it 👍
 
@@ -77,7 +78,7 @@ Nginx routes frontend requests to correct backend service automatically:
 Database schema loads only if missing — not every time playbook runs.
 
 Meaning:
-👉 You can run playbook 100 times safely 😌
+👉 You can run playbook 100 times safely 😃
 
 ---
 
@@ -126,11 +127,18 @@ ansible-playbook -e component=all roboshop.yaml
 
 ### Run Only One Service
 
-Example: deploy only **payment service**
+Example: deploy only **mongodb service**
 
 ```bash
-ansible-playbook -e component=payment roboshop.yaml
+ansible-playbook -e component=mongodb roboshop.yaml
 ```
+
+```
+ansible-playbook -e component=mongodb create-ec2.yaml; ansible-playbook -e component=catalogue create-ec2.yaml; ansible-playbook -e component=redis create-ec2.yaml; ansible-playbook -e component=user create-ec2.yaml; 
+ansible-playbook -e component=cart create-ec2.yaml; ansible-playbook -e component=mysql create-ec2.yaml;
+ansible-playbook -e component=shipping create-ec2.yaml; ansible-playbook -e component=rabbitmq create-ec2.yaml;
+ ansible-playbook -e component=payment create-ec2.yaml;  ansible-playbook -e component=frontend create-ec2.yaml
+````
 
 ---
 
