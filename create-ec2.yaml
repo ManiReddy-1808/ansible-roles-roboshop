@@ -5,4 +5,4 @@
   - "{{ component }}"
 
 
-# To run mongodb: ansible-playbook -e component=mongodb create-ec2.yaml
+# To run mongodb: ansible-playbook -i inventory -e component=mongodb create-ec2.yaml
