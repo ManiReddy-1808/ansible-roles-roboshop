@@ -1,0 +1,62 @@
+- name: app-setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-setup.yaml
+
+- name: Install maven and mysql client
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+  - maven
+  - mysql
+
+  - name: download mvn dependencies
+    ansible.builtin.command: mvn clean package
+    args:
+      chdir: /app  # 1st go this dir then run the command (mvn clean)
+
+  - name: download dependencies
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar 
+    args:
+      chdir: /app
+
+  - name: systemd-setup
+    ansible.builtin.import_role:
+      name: common
+      tasks_from: systemd-setup.yaml
+
+  - name: start shipping
+    ansible.builtin.service:
+      name: shipping
+      state: restarted
+      enabled: yes
+
+  
+  - name: install dependencie
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    - cryptography # To encrypt password in env file
+    - PyMySQL # To connect mysql from python code
+
+  - name: import shipping data
+    community.mysql.mysql_db: # To import sql file to mysql database
+      state: import
+      name: all
+      login_host: "{{ MYSQL_HOST }}"
+      login_user: root
+      login_password: {{  MYSQL_ROOT_PASSWORD }}
+      target: "{{ item }}"
+    loop:
+    - /app/db/schema.sql
+    - /app/db/app-user.sql 
+    - /app/db/master-data.sql
+
+  - name: start and enable shipping
+    ansible.builtin.service:
+      name: shipping
+      state: restarted
+      enabled: yes
+  
