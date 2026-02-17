@@ -1,10 +1,15 @@
 - name: app-setup
+  tags:
+  - deployment
   ansible.builtin.import_role:
     name: common
     tasks_from: app-setup.yaml
 
 - name: nodejs-setup
-  ansible.builtin.import_role:
+  tags:
+  - deployment
+  # ansible.builtin.import_role:
+  ansible.builtin.include_role:
     name: common
     tasks_from: nodejs-setup.yaml
 
@@ -33,8 +38,9 @@
   # Then load the products data to mongodb
 
 - name: start catalogue
+  tags:
+  - deployment
   ansible.builtin.service:
     name: catalogue
     state: restarted
     enabled: yes
-      

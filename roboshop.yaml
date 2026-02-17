@@ -5,17 +5,17 @@
   - "{{ component }}"
 
 
-# To run single: ansible-playbook -i inventory -e component=mongodb create-ec2.yaml
+# To run single: ansible-playbook -i inventory -e component=mongodb roboshop.yaml
 
 
 # To run this play-book
 # Pre-requisite: aws configure  , pip3.9 install boto3 botocore , git clone https://github.com/ManiReddy-1808/ansible-roboshop.git,
 
-# ansible-playbook -i localhost,   -e "instances=['mongodb','catalogue','redis','user','cart','mysql','shipping','rabbitmq','payment','frontend']" -e action=create create-ec2.yaml
+# ansible-playbook -i localhost,   -e "instances=['mongodb','catalogue','redis','user','cart','mysql','shipping','rabbitmq','payment','frontend']" -e action=create roboshop.yaml
 # cd 
 # git clone https://github.com/ManiReddy-1808/ansible-roles-roboshop.git
 
-# ansible-playbook -e component=mongodb create-ec2.yaml; ansible-playbook -e component=catalogue create-ec2.yaml; ansible-playbook -e component=redis create-ec2.yaml; ansible-playbook -e component=user create-ec2.yaml; 
-# ansible-playbook -e component=cart create-ec2.yaml; ansible-playbook -e component=mysql create-ec2.yaml;
-# ansible-playbook -e component=shipping create-ec2.yaml; ansible-playbook -e component=rabbitmq create-ec2.yaml;
-#  ansible-playbook -e component=payment create-ec2.yaml;  ansible-playbook -e component=frontend create-ec2.yaml
+# ansible-playbook -e component=mongodb roboshop.yaml; ansible-playbook -e component=catalogue roboshop.yaml; ansible-playbook -e component=redis roboshop.yaml; ansible-playbook -e component=user roboshop.yaml; 
+# ansible-playbook -e component=cart roboshop.yaml; ansible-playbook -e component=mysql roboshop.yaml;
+# ansible-playbook -e component=shipping roboshop.yaml; ansible-playbook -e component=rabbitmq roboshop.yaml;
+# ansible-playbook -e component=payment roboshop.yaml;  ansible-playbook -e component=frontend roboshop.yaml

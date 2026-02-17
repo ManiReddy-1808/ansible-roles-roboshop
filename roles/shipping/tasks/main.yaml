@@ -13,13 +13,6 @@
     name: common
     tasks_from: systemd-setup.yaml
 
-- name: start shipping
-  ansible.builtin.service:
-    name: shipping
-    state: restarted
-    enabled: yes
-
-
 - name: install dependencie
   ansible.builtin.pip:
     name: "{{ item }}"
