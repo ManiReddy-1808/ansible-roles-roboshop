@@ -30,6 +30,8 @@
     path: /etc/nginx/nginx.conf
 
 - name: copy nginx.conf
+  tags:
+  - configuration
   ansible.builtin.template:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
