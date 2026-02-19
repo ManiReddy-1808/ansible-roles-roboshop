@@ -141,7 +141,18 @@ ansible-playbook -e component=shipping create-ec2.yaml; ansible-playbook -e comp
 ansible-playbook -e component=payment create-ec2.yaml;  ansible-playbook -e component=frontend create-ec2.yaml
 ````
 
+ **Dynamic inventory**
+=================
+Scaling environment, servers are dynamically created and destroyed based on traffic.. we cant use static inventory file, we need to dynamically query the instances. We can use dynamic inventory plugin from AWS passing region, name of the instances, runnning state, etc.
+
+
+ **Vault**
+=======
+ansible-vault create valut.yaml
+ansible-vault view valut.yaml
+To run playbook: ansible-playbook -e component=mysql roboshop.yaml --ask-vault-pass
 ---
 
 💡 **Tip:**
 Because roles are modular, you can deploy or fix just one service without touching others — just like real production environments.
+

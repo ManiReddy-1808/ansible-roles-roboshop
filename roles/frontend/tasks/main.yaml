@@ -30,6 +30,7 @@
     path: /etc/nginx/nginx.conf
 
 - name: copy nginx.conf
+  throttle: 2
   tags:
   - configuration
   ansible.builtin.template:
