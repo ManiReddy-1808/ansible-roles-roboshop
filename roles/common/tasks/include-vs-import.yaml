@@ -7,7 +7,7 @@
 #     os: "debian"
 
 - name: message-2
-  ansible.builtin.debgug:
+  ansible.builtin.debug:
     msg: "Hi from MSG-2"
 
 - name: message-3

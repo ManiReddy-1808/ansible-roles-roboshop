@@ -1,8 +1,26 @@
 - name: call common role
-  # ansible.builtin.import_role:
-  ansible.builtin.include_role:
+  ansible.builtin.import_role:
+  # ansible.builtin.include_role:
     name: common
     tasks_from: include-vs-import.yaml
+  when: os == "RedHat"
+
+
+
+
+
+
 
 # ansible-playbook include-vs-import.yaml --> To run
 # Do syntax mistake in common/tasks/include-vs...yaml file lo
+
+# import_role and include_role
+# ===========================
+# 1. tags applied to import_role will be automatically applied to all the tasks inside it.
+# 2. tags applied to include_role will not be cascaded.
+
+# 3. import_roles parse (check everything) the playbook before execution, it is static. 
+# 4. include_role is dynamic, it will directly execute the playbook, it will not parse (check everything) like import_role before execution.
+
+# 5. conditions applied to import_role is applied to all the tasks, include_role will not care the condition applied to it.
+# 6. You cannot use loops on 'import_role' statements. You should use 'include_role' instead
