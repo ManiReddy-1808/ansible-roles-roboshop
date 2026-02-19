@@ -3,3 +3,6 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: include-vs-import.yaml
+
+# ansible-playbook include-vs-import.yaml --> To run
+# Do syntax mistake in common/tasks/include-vs...yaml file lo
