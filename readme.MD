@@ -153,6 +153,13 @@ ansible-vault view valut.yaml
 To run playbook: ansible-playbook -e component=mysql roboshop.yaml --ask-vault-pass
 ---
 
+**Disadvantages in Ansible**
+- Ansible is perfect for configuration management tool with in the linux server can do any thing.
+- If we use ansible for infrastrcture creation, since it dosen't have any state file it will fail to manage the infra.
+- But terraform has a state file it is used to managed the infra.
+
+Terraform is used to create the server's then ansible will connect to those servers and configure them
+
 💡 **Tip:**
 Because roles are modular, you can deploy or fix just one service without touching others — just like real production environments.
 
